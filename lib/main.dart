@@ -29,6 +29,16 @@ void main() {
 class XylophoneApp extends StatelessWidget {
   const XylophoneApp({Key? key}) : super(key: key);
 
+  void playSound(int i) async {
+    if (audioCache.loadedFiles.length != notes.length) {
+      await audioCache.loadAll(notes);
+    }
+    await audioPlayers[i].stop();
+    await audioPlayers[i].play(
+      AssetSource(notes[i]),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     const double height = 70;
@@ -46,15 +56,8 @@ class XylophoneApp extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             TextButton(
-              onPressed: () async {
-                const int i = 0;
-                if (audioCache.loadedFiles.length != notes.length) {
-                  await audioCache.loadAll(notes);
-                }
-                await audioPlayers[i].stop();
-                await audioPlayers[i].play(
-                  AssetSource(notes[i]),
-                );
+              onPressed: () {
+                playSound(0);
               },
               child: Container(
                 height: height,
@@ -62,15 +65,8 @@ class XylophoneApp extends StatelessWidget {
               ),
             ),
             TextButton(
-              onPressed: () async {
-                const int i = 1;
-                if (audioCache.loadedFiles.length != notes.length) {
-                  await audioCache.loadAll(notes);
-                }
-                await audioPlayers[i].stop();
-                await audioPlayers[i].play(
-                  AssetSource(notes[i]),
-                );
+              onPressed: () {
+                playSound(1);
               },
               child: Container(
                 height: height,
@@ -78,15 +74,8 @@ class XylophoneApp extends StatelessWidget {
               ),
             ),
             TextButton(
-              onPressed: () async {
-                const int i = 2;
-                if (audioCache.loadedFiles.length != notes.length) {
-                  await audioCache.loadAll(notes);
-                }
-                await audioPlayers[i].stop();
-                await audioPlayers[i].play(
-                  AssetSource(notes[i]),
-                );
+              onPressed: () {
+                playSound(2);
               },
               child: Container(
                 height: height,
@@ -94,15 +83,8 @@ class XylophoneApp extends StatelessWidget {
               ),
             ),
             TextButton(
-              onPressed: () async {
-                const int i = 3;
-                if (audioCache.loadedFiles.length != notes.length) {
-                  await audioCache.loadAll(notes);
-                }
-                await audioPlayers[i].stop();
-                await audioPlayers[i].play(
-                  AssetSource(notes[i]),
-                );
+              onPressed: () {
+                playSound(3);
               },
               child: Container(
                 height: height,
@@ -110,15 +92,8 @@ class XylophoneApp extends StatelessWidget {
               ),
             ),
             TextButton(
-              onPressed: () async {
-                const int i = 4;
-                if (audioCache.loadedFiles.length != notes.length) {
-                  await audioCache.loadAll(notes);
-                }
-                await audioPlayers[i].stop();
-                await audioPlayers[i].play(
-                  AssetSource(notes[i]),
-                );
+              onPressed: () {
+                playSound(4);
               },
               child: Container(
                 height: height,
@@ -126,15 +101,8 @@ class XylophoneApp extends StatelessWidget {
               ),
             ),
             TextButton(
-              onPressed: () async {
-                const int i = 5;
-                if (audioCache.loadedFiles.length != notes.length) {
-                  await audioCache.loadAll(notes);
-                }
-                await audioPlayers[i].stop();
-                await audioPlayers[i].play(
-                  AssetSource(notes[i]),
-                );
+              onPressed: () {
+                playSound(5);
               },
               child: Container(
                 height: height,
@@ -142,15 +110,8 @@ class XylophoneApp extends StatelessWidget {
               ),
             ),
             TextButton(
-              onPressed: () async {
-                const int i = 6;
-                if (audioCache.loadedFiles.length != notes.length) {
-                  await audioCache.loadAll(notes);
-                }
-                await audioPlayers[i].stop();
-                await audioPlayers[i].play(
-                  AssetSource(notes[i]),
-                );
+              onPressed: () {
+                playSound(6);
               },
               child: Container(
                 height: height,
