@@ -20,6 +20,20 @@ void main() {
 class XylophoneApp extends StatelessWidget {
   const XylophoneApp({Key? key}) : super(key: key);
 
+  Widget generateButton(int soundIndex, Color color) {
+    return Expanded(
+      child: TextButton(
+        style: TextButton.styleFrom(
+          backgroundColor: color,
+        ),
+        onPressed: () {
+          playSound(soundIndex);
+        },
+        child: const Text(''),
+      ),
+    );
+  }
+
   void playSound(int i) async {
     if (audioCache.loadedFiles.length != notes.length) {
       await audioCache.loadAll(notes);
@@ -34,84 +48,29 @@ class XylophoneApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const double height = 70;
     return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text(
-            'Xylophone',
+      home: SafeArea(
+        child: Scaffold(
+          appBar: AppBar(
+            title: const Text(
+              'Xylophone',
+            ),
+            backgroundColor: Colors.blue[800],
           ),
-          backgroundColor: Colors.blue[800],
-        ),
-        backgroundColor: Colors.blue,
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            TextButton(
-              onPressed: () {
-                playSound(0);
-              },
-              child: Container(
-                height: height,
-                color: Colors.red,
-              ),
-            ),
-            TextButton(
-              onPressed: () {
-                playSound(1);
-              },
-              child: Container(
-                height: height,
-                color: Colors.blue[900],
-              ),
-            ),
-            TextButton(
-              onPressed: () {
-                playSound(2);
-              },
-              child: Container(
-                height: height,
-                color: Colors.teal,
-              ),
-            ),
-            TextButton(
-              onPressed: () {
-                playSound(3);
-              },
-              child: Container(
-                height: height,
-                color: Colors.white,
-              ),
-            ),
-            TextButton(
-              onPressed: () {
-                playSound(4);
-              },
-              child: Container(
-                height: height,
-                color: Colors.black,
-              ),
-            ),
-            TextButton(
-              onPressed: () {
-                playSound(5);
-              },
-              child: Container(
-                height: height,
-                color: Colors.blueGrey,
-              ),
-            ),
-            TextButton(
-              onPressed: () {
-                playSound(6);
-              },
-              child: Container(
-                height: height,
-                color: Colors.amberAccent,
-              ),
-            ),
-          ],
+          backgroundColor: Colors.blue,
+          body: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              generateButton(0, Colors.red),
+              generateButton(1, Colors.blueGrey),
+              generateButton(2, Colors.teal),
+              generateButton(3, Colors.white),
+              generateButton(4, Colors.black),
+              generateButton(5, Colors.deepPurpleAccent),
+              generateButton(6, Colors.amberAccent),
+            ],
+          ),
         ),
       ),
     );
