@@ -2,15 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:audioplayers/audioplayers.dart';
 
 //Players:
-final audioPlayers = <AudioPlayer>[
-  AudioPlayer(),
-  AudioPlayer(),
-  AudioPlayer(),
-  AudioPlayer(),
-  AudioPlayer(),
-  AudioPlayer(),
-  AudioPlayer(),
-];
 final audioCache = AudioCache();
 const notes = <String>[
   'note1.wav',
@@ -33,9 +24,11 @@ class XylophoneApp extends StatelessWidget {
     if (audioCache.loadedFiles.length != notes.length) {
       await audioCache.loadAll(notes);
     }
-    await audioPlayers[i].stop();
-    await audioPlayers[i].play(
-      AssetSource(notes[i]),
+    final audioPlayer = AudioPlayer();
+    audioPlayer.play(
+      AssetSource(
+        notes[i],
+      ),
     );
   }
 
